@@ -9,9 +9,8 @@ const addLikeEvent = () => {
       heart.addEventListener('click', () => {
         mimicServerCall()
         .then(resp => {
-          heart.innerText === EMPTY_HEART ? heart.innerText = FULL_HEART : heart.innerText = EMPTY_HEART
-          heart.className === 'activated-heart' ? heart.className = '' : heart.className = 'activated-heart'
-          console.log(resp)
+          heart.innerHTML = FULL_HEART;
+          heart.className = "activated-heart";
         })
         .catch(resp => {
           const errorModalDiv = document.getElementById('modal')
