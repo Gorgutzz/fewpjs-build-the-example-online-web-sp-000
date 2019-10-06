@@ -7,26 +7,26 @@ const likeHearts = document.querySelectorAll('.like-glyph');
   likeHearts.forEach((heart) => {
     heart.addEventListener('click', () => {
       if heart.innerHTML == EMPTY_HEART){
-      mimicServerCall()
-      .then(resp => {
-        heart.innerHTML = FULL_HEART;
-        heart.className = "activated-heart";
-      })
-      .catch(error => {
-        let errorModal = document.getElementById("modal");
-        let errorMessage = document.getElementById("modal-message");
-        errorModal.removeAttribute("class", "hidden");
-        errorMessage.innerHTML = error;
-        setTimeout(function () {
-          errorModal.className = "hidden";
-        }, 5000);
-      });
-    } else {
-      heartElements[i].innerHTML = EMPTY_HEART;
-      heartElements[i].removeAttribute("class", "activated-heart");
-    }
-  });
-}
+        mimicServerCall()
+        .then(resp => {
+          heart.innerHTML = FULL_HEART;
+          heart.className = "activated-heart";
+        })
+        .catch(error => {
+          let errorModal = document.getElementById("modal");
+          let errorMessage = document.getElementById("modal-message");
+          errorModal.removeAttribute("class", "hidden");
+          errorMessage.innerHTML = error;
+          setTimeout(function () {
+            errorModal.className = "hidden";
+          }, 5000);
+        });
+      } else {
+        heart.innerHTML = EMPTY_HEART;
+        heart.removeAttribute("class", "activated-heart");
+      }
+    });
+  }
 
 
 
