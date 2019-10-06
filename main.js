@@ -9,7 +9,7 @@ const likeHearts = document.querySelectorAll('.like-glyph');
       mimicServerCall()
       .then(resp => {
         heart.innerHTML = FULL_HEART;
-        heartElements[i].className = "activated-heart";
+        heart.className = "activated-heart";
       })
       .catch(error => {
         let errorModal = document.getElementById("modal");
