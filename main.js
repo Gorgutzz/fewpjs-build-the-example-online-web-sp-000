@@ -7,15 +7,10 @@ const likeHearts = document.querySelectorAll('.like-glyph');
   likeHearts.forEach((heart) => {
     heart.addEventListener('click', () => {
       mimicServerCall()
-      .then(function(response){
-        let likeHeart = likeButton.children[0];
-        if(likeHeart.innerHTML == EMPTY_HEART){
-          likeHeart.innerHTML = FULL_HEART;
-          likeHeart.className = 'activated-heart';
-        } else {
-          likeHeart.innerHTML = EMPTY_HEART;
-          likeHeart.className = '';
-        }
+      .then(resp => {
+        heart.innerText === EMPTY_HEART ? heart.innerText = FULL_HEART : heart.innerText = EMPTY_HEART
+        heart.className === 'activated-heart' ? heart.className = '' : heart.className = 'activated-heart'
+        console.log(resp)
       })
       .catch(resp => {
         const errorModalDiv = document.getElementById('modal')
