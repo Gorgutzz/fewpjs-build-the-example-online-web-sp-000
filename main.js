@@ -6,12 +6,15 @@ const FULL_HEART = '♥'
 const likeHearts  = document.querySelectorAll(".like-glyph");
   for (let i = 0; i < likeHearts.length; i++) {
     likeHearts[i].addEventListener("click", function(){
-      if (likeHearts[i].innerHTML == EMPTY_HEART){
         mimicServerCall()
         .then(resp => {
+          if (likeHearts[i].innerHTML == EMPTY_HEART){
           likeHearts[i].innerHTML = FULL_HEART;
           likeHearts[i].className = "activated-heart";
-        })
+        } else {
+          likeHeart.innerHTML = EMPTY_HEART;
+          likeHeart.className = '';
+        }
         .catch(error => {
           let errorModal = document.getElementById("modal");
           let errorMessage = document.getElementById("modal-message");
