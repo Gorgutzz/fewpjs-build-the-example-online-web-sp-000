@@ -12,8 +12,8 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
           likeHearts[i].innerHTML = FULL_HEART;
           likeHearts[i].className = "activated-heart";
         } else {
-          likeHeart.innerHTML = EMPTY_HEART;
-          likeHeart.className = '';
+          likeHearts.innerHTML = EMPTY_HEART;
+          likeHearts.className = '';
         }
         .catch(error => {
           let errorModal = document.getElementById("modal");
