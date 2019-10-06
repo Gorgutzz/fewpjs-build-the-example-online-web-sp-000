@@ -8,7 +8,7 @@ const likeHearts = document.querySelectorAll('.like-glyph');
     heart.addEventListener('click', () => {
       mimicServerCall()
       .then(resp => {
-        heartElements[i].innerHTML = FULL_HEART;
+        heart.innerHTML = FULL_HEART;
         heartElements[i].className = "activated-heart";
       })
       .catch(error => {
