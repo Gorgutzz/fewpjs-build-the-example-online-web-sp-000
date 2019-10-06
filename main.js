@@ -8,7 +8,7 @@ function createLikeEvents(){
     likeHearts.forEach((heart) => {
       heart.addEventListener('click', () => {
         mimicServerCall()
-        .then(function(response){
+        .then(resp => {
           let likeHeart = likeButton.children[0];
           if(likeHeart.innerHTML == EMPTY_HEART){
             likeHeart.innerHTML = FULL_HEART;
