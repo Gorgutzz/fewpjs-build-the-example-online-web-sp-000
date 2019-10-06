@@ -22,8 +22,8 @@ let likeHearts = document.querySelectorAll(".like-glyph");
           }, 5000);
         });
       } else {
-        likeHearts[i].innerHTML = EMPTY_HEART;
-        likeHearts[i].removeAttribute("class", "activated-heart");
+        likeHearts.innerHTML = EMPTY_HEART;
+        likeHearts.removeAttribute("class", "activated-heart");
       }
     });
   }
