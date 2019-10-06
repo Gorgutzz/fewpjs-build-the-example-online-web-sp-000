@@ -4,37 +4,25 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 const addLikeEvent = () => {
-  const likeHearts = document.querySelectorAll(".like-glyph");
-    ikeHearts.forEach((heart) => {
-      likeHearts.addEventListener("click", function(e){
-        if (likeHearts.innerHTML == EMPTY_HEART){
-          mimicServerCall()
-          .then(resp => {
-            likeHearts.innerHTML = FULL_HEART;
-            likeHearts.className = "activated-heart";
-          })
-          .catch(error => {
-            let errorModal = document.getElementById("modal");
-            let errorMessage = document.getElementById("modal-message");
-            errorModal.removeAttribute("class", "hidden");
-            errorMessage.innerHTML = error;
-            setTimeout(function () {
-              errorModal.className = "hidden";
-            }, 5000);
-          });
-        } else {
-          likeHearts.innerHTML = EMPTY_HEART;
-          likeHearts.removeAttribute("class", "activated-heart");
-        }
-      });
-    }
-
-  const main = () => {
-    document.addEventListener('DOMContentLoaded', () => {
-      addLikeEvent();
+  const likeHearts = document.querySelectorAll('.like-glyph');
+    likeHearts.forEach((heart) => {
+      heart.addEventListener('click', () => {
+        mimicServerCall()
+        .then(resp => {
+          heart.innerText === EMPTY_HEART ? heart.innerText = FULL_HEART : heart.innerText = EMPTY_HEART
+          heart.className === 'activated-heart' ? heart.className = '' : heart.className = 'activated-heart'
+          console.log(resp)
+        })
+        .catch(resp => {
+          const errorModalDiv = document.getElementById('modal')
+          errorModalDiv.className = ''
+          const errorModal = document.getElementById('modal-message')
+          errorModal.innerText = resp
+          setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
+        })
+      })
     })
-  }
-
+}
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
 //------------------------------------------------------------------------------
