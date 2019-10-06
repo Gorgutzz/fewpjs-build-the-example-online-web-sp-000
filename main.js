@@ -8,24 +8,24 @@ const likeHearts = document.querySelectorAll('.like-glyph');
     heart.addEventListener('click', () => {
       mimicServerCall()
       .then(resp => {
-        let likeHeart = likeButton.children[0];
-        if(likeHeart.innerHTML == EMPTY_HEART){
-          likeHeart.innerHTML = FULL_HEART;
-          likeHeart.className = 'activated-heart';
-        } else {
-          likeHeart.innerHTML = EMPTY_HEART;
-          likeHeart.className = '';
-        }
+        heartElements[i].innerHTML = FULL_HEART;
+        heartElements[i].className = "activated-heart";
       })
-      .catch(resp => {
-        const errorModalDiv = document.getElementById('modal')
-        errorModalDiv.className = ''
-        const errorModal = document.getElementById('modal-message')
-        errorModal.innerText = resp
-        setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
+      .catch(error => {
+        let errorModal = document.getElementById("modal");
+        let errorMessage = document.getElementById("modal-message");
+        errorModal.removeAttribute("class", "hidden");
+        errorMessage.innerHTML = error;
+        setTimeout(function () {
+          errorModal.className = "hidden";
+        }, 5000);
       });
-    });
+    } else {
+      heartElements[i].innerHTML = EMPTY_HEART;
+      heartElements[i].removeAttribute("class", "activated-heart");
+    }
   });
+}
 
 
 
