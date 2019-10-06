@@ -5,7 +5,8 @@ const FULL_HEART = '♥'
 // Your JavaScript code goes here!
 function createLikeEvents(){
   const likeHearts = document.querySelectorAll('.like-glyph');
-    likeButton.addEventListener('click', function(){
+  likeHearts.forEach((heart) => {
+    heart.addEventListener('click', () => {
       mimicServerCall()
       .then(function(response){
         let likeHeart = likeButton.children[0];
