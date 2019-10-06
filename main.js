@@ -6,15 +6,12 @@ const FULL_HEART = '♥'
 const likeHearts  = document.querySelectorAll(".like-glyph");
   for (let i = 0; i < likeHearts.length; i++) {
     likeHearts[i].addEventListener("click", function(){
+      if (likeHearts[i].innerHTML == EMPTY_HEART){
         mimicServerCall()
         .then(resp => {
-          if (likeHearts[i].innerHTML == EMPTY_HEART){
           likeHearts[i].innerHTML = FULL_HEART;
           likeHearts[i].className = "activated-heart";
-        } else {
-          likeHearts.innerHTML = EMPTY_HEART;
-          likeHearts.className = '';
-        }
+        })
         .catch(error => {
           let errorModal = document.getElementById("modal");
           let errorMessage = document.getElementById("modal-message");
@@ -24,6 +21,10 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
             errorModal.className = "hidden";
           }, 5000);
         });
+      } else {
+        likeHearts[i].innerHTML = EMPTY_HEART;
+        likeHearts[i].removeAttribute("class", "activated-heart");
+      }
     });
 }
 
