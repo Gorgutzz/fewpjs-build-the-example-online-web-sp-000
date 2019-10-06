@@ -19,7 +19,7 @@ function createLikeEvents(){
       })
       .catch(function(error){
         displayError(error);
-      });      
+      });
     });
   });
 }
