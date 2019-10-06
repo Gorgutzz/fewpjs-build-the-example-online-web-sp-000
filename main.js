@@ -4,13 +4,13 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 const likeHearts  = document.querySelectorAll(".like-glyph");
-  for (let i = 0; i < heartElements.length; i++) {
-    heartElements[i].addEventListener("click", function(e){
-      if (heartElements[i].innerHTML == EMPTY_HEART){
+  for (let i = 0; i < likeHearts.length; i++) {
+    likeHearts[i].addEventListener("click", function(e){
+      if (likeHearts[i].innerHTML == EMPTY_HEART){
         mimicServerCall()
         .then(resp => {
-          heartElements[i].innerHTML = FULL_HEART;
-          heartElements[i].className = "activated-heart";
+          likeHearts[i].innerHTML = FULL_HEART;
+          likeHearts[i].className = "activated-heart";
         })
         .catch(error => {
           let errorModal = document.getElementById("modal");
@@ -22,8 +22,8 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
           }, 5000);
         });
       } else {
-        heartElements[i].innerHTML = EMPTY_HEART;
-        heartElements[i].removeAttribute("class", "activated-heart");
+        likeHearts[i].innerHTML = EMPTY_HEART;
+        likeHearts[i].removeAttribute("class", "activated-heart");
       }
     });
 }
