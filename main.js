@@ -24,10 +24,6 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
             errorModal.className = "hidden";
           }, 5000);
         });
-      } else {
-        likeHearts[i].innerHTML = EMPTY_HEART;
-        likeHearts[i].removeAttribute("class", "activated-heart");
-      }
     });
 }
 
