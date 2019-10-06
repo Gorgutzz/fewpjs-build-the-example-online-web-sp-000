@@ -12,14 +12,8 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
           likeHearts[i].innerHTML = FULL_HEART;
           likeHearts[i].className = "activated-heart";
         })
-        .catch(error => {
-          let errorModal = document.getElementById("modal");
-          let errorMessage = document.getElementById("modal-message");
-          errorModal.removeAttribute("class", "hidden");
-          errorMessage.innerHTML = error;
-          setTimeout(function () {
-            errorModal.className = "hidden";
-          }, 5000);
+        .catch(function(error){
+          displayError(error);
         });
       } else {
         likeHearts[i].innerHTML = EMPTY_HEART;
