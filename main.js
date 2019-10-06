@@ -3,8 +3,8 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-function createLikeEvents(){
-  document.querySelectorAll("li.like").forEach(function(likeButton){
+const addLikeEvent = () => {
+  const likeHearts = document.querySelectorAll('.like-glyph');
     likeButton.addEventListener('click', function(){
       mimicServerCall()
       .then(function(response){
