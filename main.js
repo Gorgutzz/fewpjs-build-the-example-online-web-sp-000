@@ -3,30 +3,31 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-const likeHearts = document.querySelectorAll(".like-glyph");
-  ikeHearts.forEach((heart) => {
-    likeHearts.addEventListener("click", function(e){
-      if (likeHearts.innerHTML == EMPTY_HEART){
-        mimicServerCall()
-        .then(resp => {
-          likeHearts.innerHTML = FULL_HEART;
-          likeHearts.className = "activated-heart";
-        })
-        .catch(error => {
-          let errorModal = document.getElementById("modal");
-          let errorMessage = document.getElementById("modal-message");
-          errorModal.removeAttribute("class", "hidden");
-          errorMessage.innerHTML = error;
-          setTimeout(function () {
-            errorModal.className = "hidden";
-          }, 5000);
-        });
-      } else {
-        likeHearts.innerHTML = EMPTY_HEART;
-        likeHearts.removeAttribute("class", "activated-heart");
-      }
-    });
-  }
+const addLikeEvent = () => {
+  const likeHearts = document.querySelectorAll(".like-glyph");
+    ikeHearts.forEach((heart) => {
+      likeHearts.addEventListener("click", function(e){
+        if (likeHearts.innerHTML == EMPTY_HEART){
+          mimicServerCall()
+          .then(resp => {
+            likeHearts.innerHTML = FULL_HEART;
+            likeHearts.className = "activated-heart";
+          })
+          .catch(error => {
+            let errorModal = document.getElementById("modal");
+            let errorMessage = document.getElementById("modal-message");
+            errorModal.removeAttribute("class", "hidden");
+            errorMessage.innerHTML = error;
+            setTimeout(function () {
+              errorModal.className = "hidden";
+            }, 5000);
+          });
+        } else {
+          likeHearts.innerHTML = EMPTY_HEART;
+          likeHearts.removeAttribute("class", "activated-heart");
+        }
+      });
+    }
 
   const main = () => {
     document.addEventListener('DOMContentLoaded', () => {
