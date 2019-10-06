@@ -17,9 +17,13 @@ function createLikeEvents(){
           likeHeart.className = '';
         }
       })
-      .catch(function(error){
-        displayError(error);
-      });
+      .catch(resp => {
+        const errorModalDiv = document.getElementById('modal')
+        errorModalDiv.className = ''
+        const errorModal = document.getElementById('modal-message')
+        errorModal.innerText = resp
+        setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
+      })
     });
   });
 }
