@@ -3,12 +3,8 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-document.addEventListener('DOMContentLoaded', function(){
-  createLikeEvents();
-});
 
-function createLikeEvents(){
-  document.querySelectorAll("li.like").forEach(function(likeButton){
+  let heartElements = document.querySelectorAll("li.like").forEach(function(likeButton){
     likeButton.addEventListener('click', function(){
       mimicServerCall()
       .then(function(response){
