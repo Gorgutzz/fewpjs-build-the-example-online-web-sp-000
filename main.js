@@ -3,20 +3,15 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-function createLikeEvents(){
+const addLikeEvent = () => {
   const likeHearts = document.querySelectorAll('.like-glyph');
     likeHearts.forEach((heart) => {
       heart.addEventListener('click', () => {
         mimicServerCall()
         .then(resp => {
-          let likeHeart = likeButton.children[0];
-          if(likeHeart.innerHTML == EMPTY_HEART){
-            likeHeart.innerHTML = FULL_HEART;
-            likeHeart.className = 'activated-heart';
-          } else {
-            likeHeart.innerHTML = EMPTY_HEART;
-            likeHeart.className = '';
-          }
+          heart.innerText === EMPTY_HEART ? heart.innerText = FULL_HEART : heart.innerText = EMPTY_HEART
+          heart.className === 'activated-heart' ? heart.className = '' : heart.className = 'activated-heart'
+          console.log(resp)
         })
         .catch(resp => {
           const errorModalDiv = document.getElementById('modal')
@@ -25,10 +20,15 @@ function createLikeEvents(){
           errorModal.innerText = resp
           setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
         })
-      });
-    });
+      })
+    })
 }
 
+const main = () => {
+  document.addEventListener('DOMContentLoaded', () => {
+    addLikeEvent();
+  })
+}
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
