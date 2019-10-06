@@ -7,7 +7,7 @@ const likeHearts = document.querySelectorAll('.like-glyph');
   likeHearts.forEach((heart) => {
     heart.addEventListener('click', () => {
       mimicServerCall()
-      .then(resp => {
+      .then(function(response){
         let likeHeart = likeButton.children[0];
         if(likeHeart.innerHTML == EMPTY_HEART){
           likeHeart.innerHTML = FULL_HEART;
