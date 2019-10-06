@@ -3,7 +3,7 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-let likeHearts = document.querySelectorAll(".like-glyph");
+const likeHearts = document.querySelectorAll(".like-glyph");
   ikeHearts.forEach((heart) => {
     likeHearts.addEventListener("click", function(e){
       if (likeHearts.innerHTML == EMPTY_HEART){
@@ -28,7 +28,11 @@ let likeHearts = document.querySelectorAll(".like-glyph");
     });
   }
 
-
+  const main = () => {
+    document.addEventListener('DOMContentLoaded', () => {
+      addLikeEvent();
+    })
+  }
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
