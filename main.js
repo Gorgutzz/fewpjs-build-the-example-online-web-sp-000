@@ -5,12 +5,12 @@ const FULL_HEART = '♥'
 // Your JavaScript code goes here!
 let likeHearts = document.querySelectorAll(".like-glyph");
   ikeHearts.forEach((heart) => {
-    likeHearts[i].addEventListener("click", function(e){
-      if (likeHearts[i].innerHTML == EMPTY_HEART){
+    likeHearts.addEventListener("click", function(e){
+      if (likeHearts.innerHTML == EMPTY_HEART){
         mimicServerCall()
         .then(resp => {
-          likeHearts[i].innerHTML = FULL_HEART;
-          likeHearts[i].className = "activated-heart";
+          likeHearts.innerHTML = FULL_HEART;
+          likeHearts.className = "activated-heart";
         })
         .catch(error => {
           let errorModal = document.getElementById("modal");
