@@ -3,29 +3,39 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
-const likeHearts  = document.querySelectorAll(".like-glyph");
-  for (let i = 0; i < likeHearts.length; i++) {
-    likeHearts[i].addEventListener("click", function(){
-      if (likeHearts[i].innerHTML == EMPTY_HEART){
-        mimicServerCall()
-        .then(resp => {
-          likeHearts[i].innerHTML = FULL_HEART;
-          likeHearts[i].className = "activated-heart";
-        })
-        .catch(error => {
-          let errorModal = document.getElementById("modal");
-          let errorMessage = document.getElementById("modal-message");
-          errorModal.removeAttribute("class", "hidden");
-          errorMessage.innerHTML = error;
-          setTimeout(function () {
-            errorModal.className = "hidden";
-          }, 5000);
-        });
-      } else {
-        likeHearts[i].innerHTML = EMPTY_HEART;
-        likeHearts[i].removeAttribute("class", "activated-heart");
-      }
+document.addEventListener('DOMContentLoaded', function(){
+  createLikeEvents();
+});
+
+function createLikeEvents(){
+  document.querySelectorAll("li.like").forEach(function(likeButton){
+    likeButton.addEventListener('click', function(){
+      mimicServerCall()
+      .then(function(response){
+        let likeHeart = likeButton.children[0];
+        if(likeHeart.innerHTML == EMPTY_HEART){
+          likeHeart.innerHTML = FULL_HEART;
+          likeHeart.className = 'activated-heart';
+        } else {
+          likeHeart.innerHTML = EMPTY_HEART;
+          likeHeart.className = '';
+        }
+      })
+      .catch(function(error){
+        displayError(error);
+      });
     });
+  });
+}
+
+function displayError(errorText){
+  document.getElementById('modal').className = '';
+  document.getElementById('modal-message').innerHTML = errorText;
+  setTimeout(hideErrorModal, 5000);
+};
+
+function hideErrorModal(){
+  document.getElementById('modal').className = 'hidden';
 }
 
 //------------------------------------------------------------------------------
