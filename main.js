@@ -12,17 +12,16 @@ const likeHearts = document.querySelectorAll('.like-glyph');
         if(likeHeart.innerHTML == EMPTY_HEART){
           likeHeart.innerHTML = FULL_HEART;
           likeHeart.className = 'activated-heart';
+        } else {
+          likeHeart.innerHTML = EMPTY_HEART;
+          likeHeart.className = '';
+        }
       })
-      .catch(resp => {
-        const errorModalDiv = document.getElementById('modal')
-        errorModalDiv.className = ''
-        const errorModal = document.getElementById('modal-message')
-        errorModal.innerText = resp
-        setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
-      })
-    })
-  })
-
+      .catch(function(error){
+        displayError(error);
+      });
+    });
+  });
 
 
 
