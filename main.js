@@ -24,7 +24,13 @@ const addLikeEvent = () => {
     })
 }
 
+const main = () => {
+  document.addEventListener('DOMContentLoaded', () => {
+    addLikeEvent();
+  })
+}
 
+main();
 
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
