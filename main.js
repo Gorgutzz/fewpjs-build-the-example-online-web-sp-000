@@ -6,6 +6,7 @@ const FULL_HEART = '♥'
 const likeHearts = document.querySelectorAll('.like-glyph');
   likeHearts.forEach((heart) => {
     heart.addEventListener('click', () => {
+      if heart.innerHTML == EMPTY_HEART){
       mimicServerCall()
       .then(resp => {
         heart.innerHTML = FULL_HEART;
