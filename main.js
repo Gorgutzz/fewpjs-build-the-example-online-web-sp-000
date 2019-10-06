@@ -22,6 +22,12 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
     });
 }
 
+function displayError(errorText){
+  document.getElementById('modal').className = '';
+  document.getElementById('modal-message').innerHTML = errorText;
+  setTimeout(hideErrorModal, 5000);
+};
+
 //------------------------------------------------------------------------------
 // Ignore after this point. Used only for demo purposes
 //------------------------------------------------------------------------------
