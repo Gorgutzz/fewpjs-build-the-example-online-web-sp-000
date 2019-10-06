@@ -12,13 +12,13 @@ const likeHearts  = document.querySelectorAll(".like-glyph");
           likeHearts[i].innerHTML = FULL_HEART;
           likeHearts[i].className = "activated-heart";
         })
+        .catch(function(error){
+          displayError(error);
+        });
       } else {
         likeHearts[i].innerHTML = EMPTY_HEART;
         likeHearts[i].removeAttribute("class", "activated-heart");
       }
-      .catch(function(error){
-        displayError(error);
-      });
     });
 }
 
