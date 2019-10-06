@@ -17,7 +17,7 @@ const likeHearts = document.querySelectorAll('.like-glyph');
           likeHeart.className = '';
         }
       })
-        .catch(resp => {
+      .catch(resp => {
         displayError(error);
       });
     });
