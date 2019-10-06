@@ -18,7 +18,11 @@ const likeHearts = document.querySelectorAll('.like-glyph');
         }
       })
       .catch(resp => {
-        displayError(error);
+        const errorModalDiv = document.getElementById('modal')
+        errorModalDiv.className = ''
+        const errorModal = document.getElementById('modal-message')
+        errorModal.innerText = resp
+        setTimeout(() => {errorModalDiv.className = 'hidden'}, 5000)
       });
     });
   });
